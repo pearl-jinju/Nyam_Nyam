@@ -1,0 +1,2539 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>모든 맛집이 내 손안에! 냠냠</title>
+    <meta content="width=device-width, initial-scale=0.3" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <link href="{{ url_for('static', filename='img/favicon.ico') }}" rel="icon">
+
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+
+    <link href="{{ url_for('static', filename='lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+</head>
+
+<body style="background: #0F172B;">
+    <div  class="container-xxl bg-#0F172B p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Nyam Nyam</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0 pe-4">
+
+                        <a href="" id="vector1" name ="name1" style="font-size: 20px;"  class="nav-item nav-link"></a>
+                        <a href="" id="vector2" name ="name2" style="font-size: 20px;"  class="nav-item nav-link"></a>
+                        <a href="" id="vector3" name ="name3" style="font-size: 20px;"  class="nav-item nav-link"></a>
+                        <a href="" id="vector4" name ="name4" style="font-size: 20px;"  class="nav-item nav-link"></a>
+                        <a href="" id="vector5" name ="name5" style="font-size: 20px;"  class="nav-item nav-link"></a>
+                        <a href="" id="vector6" name ="name6" style="font-size: 20px;"  class="nav-item nav-link"></a>
+                        <a href="" id="vector7" name ="name7" style="font-size: 20px;"  class="nav-item nav-link"></a>
+                        <a href="" id="vector8" name ="name8" style="font-size: 20px;"  class="nav-item nav-link"></a>
+                        <a href="" id="vector9" name ="name9" style="font-size: 20px;"  class="nav-item nav-link"></a>
+                        <a href="" id="vector10" name ="name10" style="font-size: 20px;"  class="nav-item nav-link"></a>
+
+                    </div>
+                    <button onclick="location_go()"  type="button"   class ="go"   style=" border-radius: 10%; background: #E3682B; border: groove 5px; font-weight: bold; font-size: 50px; color: white; width: 350px; height: 120px;" >맛집 찾기</button>
+                </div>
+            </nav>
+
+            <div class="container-xxl py-5 bg-dark hero-header mb-5">
+                <div class="container my-5 py-5">
+                    <div class="row align-items-center g-5">
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <h1 class="display-3 text-white animated slideInLeft" >내 주변 모든 맛집<br>Nyam Nyam!</h1>
+                            <p class="text-white animated slideInLeft mb-4 pb-4" style="font-size: 35px;">
+                                <br>1.맘에드는 맛집 GOOD 누르기!<br>2. 맛집 찾기 버튼 누르기!<br>3. 비슷한 맛집이 와르르<br> &nbsp; ※결과가 없는 경우, 범위 늘리기</p>
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-end overflow-hidden">
+                            <img class="img-fluid" src="../static/img/hero1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+<!--주변 거리  슬라이더 영역-->
+<div class="" >
+     <div  style="text-align:center;  border-radius: 35%; align-content: center; height:100%px; width: 100%; font-size: 45px; background: #feaa2d; color: white; font-weight: bold;">주변 탐색범위를 설정해주세요 (단위 : m)</div>
+    <button type="button" onclick="set_dis1()" style="background: #FBC10D; border-radius: 30%; color: white; width: 14%; font-weight: bold;font-size: 40px;">500m </button>
+    <button type="button" onclick="set_dis2()" style="background: #E3980B; border-radius: 30%; color: white; width: 14%; font-weight: bold;font-size: 40px;">1km </button>
+    <button type="button" onclick="set_dis3()" style="background: #FA8F18; border-radius: 30%; color: white; width: 14%; font-weight: bold;font-size: 40px;">3km </button>
+    <button type="button" onclick="set_dis4()" style="background: #E3712B; border-radius: 30%; color: white; width: 14%; font-weight: bold;font-size: 40px;">5km </button>
+    <button type="button" onclick="set_dis5()" style="background: #FF521F; border-radius: 30%; color: white; width: 14%; font-weight: bold;font-size: 40px;">10km </button>
+    <button type="button" onclick="set_dis6()" style="background: #FF2D0F; border-radius: 30%; color: white; width: 14%; font-weight: bold;font-size: 40px;">최대 </button>
+    <div style="text-align:center; background: black; color: white; font-size: 50px;" id = "slider_value_view">50000</div>
+ <div class="slidecontainer">
+    <input  id="distance myRange"  style = "width:100%;" class="slider slider_range slidecontainer" type="range" value="50000" min="500" max="50000" >
+</div>
+
+
+</div>
+<!-- 주변 거리  슬라이더 영역       -->
+
+        <!-- Start Showing Contents  -->
+        <div   class="container-xxl py-5 px-0 wow fadeInUp"  id="recommend"   data-wow-delay="0.3s">
+            <div class="row g-0">
+                <div class="col-md-6">
+                    <div class="video">
+                        <img src="https://mblogthumb-phinf.pstatic.net/20160809_65/dst_0700_1470711383976exWhM_JPEG/attachImage_4145640007.jpeg?type=w800" class="col-sm-12" style="height: 100%;">
+
+                    </div>
+                </div>
+                <div class="col-md-6 bg-dark d-flex align-items-center">
+                    <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
+                        <h5 class="section-title ff-secondary text-start text-primary fw-normal">Nyam Nyam</h5>
+
+                        <h1  class="text-white mb-4"> 문의 : 추천시스템 5조</h1>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-floating">
+
+
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button   class="btn btn-primary w-100 py-6" type="submit" style="height: 100px; margin: auto; background: #feaa2d; width: 500px; font-size: 40px; font-weight: bold;">문의하기</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- Reservation Start -->
+
+
+        <!-- Team Start -->
+        <div class="container-xxl pt-5 pb-3">
+            <div class="container">
+                <div  class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Team Members</h5>
+                    <h1 class="mb-5" style="color: white;">Developer</h1>
+                </div>
+                <div class="row g-3">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="team-item text-center rounded overflow-hidden">
+                            <div class="rounded-circle overflow-hidden m-4">
+                                <img class="img-fluid" src="../static/img/1.png" alt="">
+                            </div>
+                            <h5 class="mb-0" style="color: white; font-size: 35px;">박민영</h5>
+                            <div class="d-flex justify-content-center mt-3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="team-item text-center rounded overflow-hidden">
+                            <div class="rounded-circle overflow-hidden m-4">
+                                <img class="img-fluid" src="../static/img/2.png" alt="">
+                            </div>
+                            <h5 class="mb-0" style="color: white; font-size: 35px;">정진주</h5>
+                            <div class="d-flex justify-content-center mt-3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="team-item text-center rounded overflow-hidden">
+                            <div class="rounded-circle overflow-hidden m-4">
+                                <img class="img-fluid" src="../static/img/3.png" alt="">
+                            </div>
+                            <h5 class="mb-0" style="color: white; font-size: 35px;">신위재</h5>
+                            <div class="d-flex justify-content-center mt-3">
+
+                            </div>
+                        </div>
+                    </div>
+<!--                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">-->
+<!--                        <div class="team-item text-center rounded overflow-hidden">-->
+<!--                            <div class="rounded-circle overflow-hidden m-4">-->
+<!--                                <img class="img-fluid" src="../static/img/4.png" alt="">-->
+<!--                            </div>-->
+<!--                            <h5 class="mb-0">이경식</h5>-->
+
+<!--                            <div class="d-flex justify-content-center mt-3">-->
+<!--                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>-->
+<!--                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>-->
+<!--                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+        <!-- Team End -->
+
+
+
+        <!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top" style="width: 300px; height: 150px; font-size: 40px; font-weight: bold;"> 맨위로 이동<i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+<!--    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
+
+    <script  src="https://code.jquery.com/jquery-3.6.0.min.js"  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="  crossorigin="anonymous"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/lib/wow/wow.min.js"></script>
+    <script src="../static/lib/easing/easing.min.js"></script>
+    <script src="../static/lib/waypoints/waypoints.min.js"></script>
+    <script src="../static/lib/counterup/counterup.min.js"></script>
+    <script src="../static/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="../static/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="../static/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="../static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!--복사버튼 -->
+<!--    <script>-->
+<!--    function copyClipboard() {-->
+<!--        const text = document.getElementsByclassname('copy').textContent;-->
+<!--        const textarea = document.createElement('textarea');-->
+<!--        textarea.textContent = text;-->
+<!--        document.body.append(textarea);-->
+<!--        textarea.select();-->
+<!--        document.execCommand('copy');-->
+<!--        textarea.remove();-->
+<!--        }-->
+
+<!--    const button = document.getElementById('button')-->
+<!--    button.addEventListener('click', copyClipboard);-->
+<!--    </script>-->
+
+     <!--위치정보기반 정보 가져오기 함수 모음 -->
+
+
+
+
+
+
+<!--     Template Javascript -->
+
+<script src="../static/js/main.js"></script>
+
+
+<!--   초기 함수 위치 정보 및 벡터 반영 후 추천시스템 결과 가져오는 스크립트-->
+<script>
+
+function location_go(){
+        window.scrollTo(0, document.body.scrollHeight);
+
+        navigator.geolocation.getCurrentPosition(
+             function(position) {
+
+            //화면 맨위로 올리기
+            $(window).scrollTop(0);
+            window.onbeforeunload = function () {
+                return "Data will be lost if you leave the page, are you sure?";
+            };
+            $('#content_0').remove();
+            $('#content_1').remove();
+            $('#content_2').remove();
+            $('#content_3').remove();
+            $('#content_4').remove();
+            $('#content_5').remove();
+            $('#content_6').remove();
+            $('#content_7').remove();
+            $('#content_8').remove();
+            $('#content_9').remove();
+            $('#content_10').remove();
+            $('#content_11').remove();
+            $('#content_12').remove();
+            $('#content_13').remove();
+            $('#content_14').remove();
+            $('#content_15').remove();
+            $('#content_16').remove();
+            $('#content_17').remove();
+            $('#content_18').remove();
+            $('#content_19').remove();
+
+
+            //리스트에 기존 값들을 먼저 담아라
+            let send_vecor_ls = [];
+            let user_vector1 = document.getElementById("vector1").innerText;
+            let user_vector2 = document.getElementById("vector2").innerText;
+            let user_vector3 = document.getElementById("vector3").innerText;
+            let user_vector4 = document.getElementById("vector4").innerText;
+            let user_vector5 = document.getElementById("vector5").innerText;
+            let user_vector6 = document.getElementById("vector6").innerText;
+            let user_vector7 = document.getElementById("vector7").innerText;
+            let user_vector8 = document.getElementById("vector8").innerText;
+            let user_vector9 = document.getElementById("vector9").innerText;
+            let user_vector10 = document.getElementById("vector10").innerText;
+            send_vecor_ls.push(user_vector1);
+            send_vecor_ls.push(user_vector2);
+            send_vecor_ls.push(user_vector3);
+            send_vecor_ls.push(user_vector4);
+            send_vecor_ls.push(user_vector5);
+            send_vecor_ls.push(user_vector6);
+            send_vecor_ls.push(user_vector7);
+            send_vecor_ls.push(user_vector8);
+            send_vecor_ls.push(user_vector9);
+            send_vecor_ls.push(user_vector10);
+      
+            console.log(send_vecor_ls)
+
+            let send_text = ' '
+            for (j = 0; j <= send_vecor_ls.length; j++) {
+                send_text = send_text + ' ' + send_vecor_ls[j]
+            }
+            let result_vector = send_text.split(" ")
+            let result_vector_ = result_vector.slice(2, -1);
+            let distance = document.getElementById("slider_value_view").innerText;
+
+            let url_a = "/get_data?";
+            let url_b = "latitude_give=";
+            let url_c = "&longitude_give=";
+            let url_d = "&vector_give=";
+            let url_e = "&distance_give=";
+            let url_all = url_a + url_b + position.coords.latitude + url_c + position.coords.longitude + url_d + result_vector_ + url_e+ distance;
+            //화면 맨위로 올리기
+            $(window).scrollTop(0);
+
+            $.ajax({
+                type: "GET",
+                url: url_all,
+                data: {},
+                success: function (response) {
+                    // alert(response["msg"]);
+                    
+                    for (i = 0; i <= response['res'].length + 1; i++) {
+                        let num = i;
+                        let name = response['res'][i][1];
+                        let rating = response['res'][i][4];
+
+                        let distance = Math.ceil(response['res'][i][7]);
+                        let address = response['res'][i][2];
+                        let img = response['res'][i][5];
+                        let vector = response['res'][i][8];
+
+                        // 클래스에 vector를 2개를랜덤 추출하여 부여하자
+                        let vectors1 = vector[0]
+                        let vectors2 = vector[1]
+                        let vectors3 = vector[2]
+                        let vectors4 = vector[3]
+                        let vectors5 = vector[4]
+                        let vectors6 = vector[5]
+                        let vectors7 = vector[6]
+                        let vectors8 = vector[7]
+                        let vectors9 = vector[8]
+                        let vectors10 = vector[9]
+
+
+                        let temp_html = ` <div  style="background: #0F172B;"  id="content_${num}"  class="container-xxl py-3 px-0 wow fadeInUp"     data-wow-delay="0.2s">
+    <div class="row g-0">
+        <div class="col-md-6">
+            <div class="video">
+                <img src="${img}" class="col-md-6" style="height: 100%; width: 100%">
+
+            </div>
+        </div>
+        <div class=" col-md-6 bg-dark d-flex align-items-center">
+            <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
+                <h5 class="section-title ff-secondary text-start text-primary fw-normal" >Nyam Nyam</h5>
+                <h1 class="text-white mb-4" style="font-size:400%; " >${name}</h1>
+                <form>
+                    <div class="row g-6">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <h2 class="text-white mb-4" >★ ${rating.toFixed(1)}</h2>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <h2 class="text-white mb-4">${distance}m</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                 <h2 class="text-white mb-3"  style="font-size: 25px color:#92B3B7 ">${vectors1} ${vectors2} ${vectors3} ${vectors4} ${vectors5} </h2>
+                                 <h2 class="text-white mb-4"  style="font-size: 28px;">${address}  </h2>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <button onclick="vectors_summit${num}()"  id="${num}" class="${vectors1},${vectors2},${vectors3},${vectors4},${vectors5},${vectors6},${vectors7},${vectors8},${vectors9},${vectors10}" style="display : none;" ></button>
+                            <button  id="${num}_sub" class="w-btn-outline w-btn-red-outline ${vectors1} ${vectors2} ${vectors3} ${vectors4} ${vectors5} ${vectors6} ${vectors7} ${vectors8} ${vectors9} ${vectors10}" type="button" id="${num}" onclick="vectors_summit${num}()" style="font-size:200%"> GOOD! </button>
+
+
+                        </div>
+                        <container class="col-12">
+                        </a>
+                        <a type ='button' class="col-1"   >
+                        </a>
+                        <a type ='button' class="col-2"   href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=${name}" target='_blank'>
+                        <img src={{ url_for('static', filename='img/button1.png') }} style = "border-radius: 30%; overflow: hidden; width: 100%; height:100%;"/>
+                        </a>
+                        <a type ='button' class="col-1"   >
+                        </a>
+                        <a type ='button' class="col-2"   href="https://www.instagram.com/explore/tags/${name}/" target='_blank'>
+                        <img src={{ url_for('static', filename='img/button2.png') }} style = "border-radius: 30%; overflow: hidden; width: 100%; height:100%;"/>
+                        </a>
+                        <a type ='button' class="col-1"   >
+                        </a>
+                        <a type ='button' class="col-2"   href="https://www.youtube.com/results?search_query=${name}" target='_blank'>
+                        <img src={{ url_for('static', filename='img/button3.png') }} style = "border-radius: 30%; overflow: hidden; width: 100%; height:100%;" />
+                        </a>
+
+                        </container>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>`
+                        $('#recommend').append(temp_html);
+
+
+                            }
+                        }
+                    });
+
+                    },
+                );
+            }
+
+location_go()
+
+</script>
+<!--    -->
+
+
+
+    <script>
+
+
+function vectors_summit0 (){
+// 벡터 값을 가져오기
+let className1 = $('#0').attr('class');
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+                let btn_msg =  document.getElementById("0_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+
+
+                }})}
+function vectors_summit1 (){
+// 벡터 값을 가져오기
+let className1 = $('#1').attr('class');
+
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+                let btn_msg =  document.getElementById("1_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+
+                }})}
+function vectors_summit2 (){
+// 벡터 값을 가져오기
+let className1 = $('#2').attr('class');
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+                let btn_msg =  document.getElementById("2_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+
+
+
+                    }})}
+function vectors_summit3 (){
+// 벡터 값을 가져오기
+let className1 = $('#3').attr('class');
+
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+
+                let btn_msg =  document.getElementById("3_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+
+
+
+                    }})}
+function vectors_summit4 (){
+// 벡터 값을 가져오기
+let className1 = $('#4').attr('class');
+
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+
+
+                let btn_msg =  document.getElementById("4_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+
+                    }})}
+function vectors_summit5 (){
+// 벡터 값을 가져오기
+let className1 = $('#5').attr('class');
+
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+                let btn_msg =  document.getElementById("5_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+                    }})}
+function vectors_summit6 (){
+// 벡터 값을 가져오기
+let className1 = $('#6').attr('class');
+
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+                let btn_msg =  document.getElementById("6_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+                    }})}
+
+function vectors_summit7 (){
+// 벡터 값을 가져오기
+let className1 = $('#7').attr('class');
+
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+                let btn_msg =  document.getElementById("7_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+
+                    }})}
+function vectors_summit8 (){
+// 벡터 값을 가져오기
+let className1 = $('#8').attr('class');
+
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+                let btn_msg =  document.getElementById("8_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+
+                    }})}
+function vectors_summit9 (){
+// 벡터 값을 가져오기
+let className1 = $('#9').attr('class');
+
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+                let btn_msg =  document.getElementById("9_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+
+                    }})}
+function vectors_summit10 (){
+// 벡터 값을 가져오기
+let className1 = $('#10').attr('class');
+
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+                let btn_msg =  document.getElementById("10_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+
+                    }})}
+function vectors_summit11 (){
+// 벡터 값을 가져오기
+let className1 = $('#11').attr('class');
+
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+                let btn_msg =  document.getElementById("11_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+
+                    }})}
+function vectors_summit12 (){
+// 벡터 값을 가져오기
+let className1 = $('#12').attr('class');
+
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+                let btn_msg =  document.getElementById("12_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+
+                    }})}
+function vectors_summit13 (){
+// 벡터 값을 가져오기
+let className1 = $('#13').attr('class');
+
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+                let btn_msg =  document.getElementById("13_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+                    }})}
+function vectors_summit14 (){
+// 벡터 값을 가져오기
+let className1 = $('#14').attr('class');
+
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+                let btn_msg =  document.getElementById("14_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+
+                    }})}
+function vectors_summit15 (){
+// 벡터 값을 가져오기
+let className1 = $('#15').attr('class');
+
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+                let btn_msg =  document.getElementById("15_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+
+                    }})}
+function vectors_summit16 (){
+// 벡터 값을 가져오기
+let className1 = $('#16').attr('class');
+
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+                let btn_msg =  document.getElementById("16_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+                    }})}
+function vectors_summit17 (){
+// 벡터 값을 가져오기
+let className1 = $('#17').attr('class');
+
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+                let btn_msg =  document.getElementById("17_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+
+                    }})}
+function vectors_summit18 (){
+// 벡터 값을 가져오기
+let className1 = $('#18').attr('class');
+
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+
+                let btn_msg =  document.getElementById("18_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+
+                    }})}
+function vectors_summit19 (){
+// 벡터 값을 가져오기
+let className1 = $('#19').attr('class');
+
+
+let url_a = "/get_vector?";
+let url_b = "vector=";
+let url_all = url_a + url_b +className1;
+let vector_ls = []
+$.ajax({
+            type: "GET",
+            url: url_all,
+            data: {},
+            success: function (response) {
+
+
+                //현재 백터를 가져와서
+                let user_vector1 =  document.getElementById("vector1").innerText;
+                let user_vector2 =  document.getElementById("vector2").innerText;
+                let user_vector3 =  document.getElementById("vector3").innerText;
+                let user_vector4 =  document.getElementById("vector4").innerText;
+                let user_vector5 =  document.getElementById("vector5").innerText;
+                let user_vector6 =  document.getElementById("vector6").innerText;
+                let user_vector7 =  document.getElementById("vector7").innerText;
+                let user_vector8 =  document.getElementById("vector8").innerText;
+                let user_vector9 =  document.getElementById("vector9").innerText;
+                let user_vector10 =  document.getElementById("vector10").innerText;
+
+                vector_ls.push(user_vector1);
+                vector_ls.push(user_vector2);
+                vector_ls.push(user_vector3);
+                vector_ls.push(user_vector4);
+                vector_ls.push(user_vector5);
+                vector_ls.push(user_vector6);
+                vector_ls.push(user_vector7);
+                vector_ls.push(user_vector8);
+                vector_ls.push(user_vector9);
+                vector_ls.push(user_vector10);
+
+
+                vector_ls.push(response["res"][0]);
+                vector_ls.push(response["res"][1]);
+                vector_ls.push(response["res"][2]);
+                // 리스트로 만들고
+                // 리스트에 값을 집어넣은 다음 리스트를 슬라이싱
+                vector_ls = vector_ls.slice(3, 13);
+
+                // 벡터를 업데이트
+                let new_user_vector1 = vector_ls[0];
+                let change_user_vector1 =  document.getElementById("vector1")
+                change_user_vector1.innerText = new_user_vector1
+
+                let new_user_vector2 = vector_ls[1];
+                let change_user_vector2 =  document.getElementById("vector2")
+                change_user_vector2.innerText = new_user_vector2
+
+                let new_user_vector3 = vector_ls[2];
+                let change_user_vector3 =  document.getElementById("vector3")
+                change_user_vector3.innerText = new_user_vector3
+
+                let new_user_vector4 = vector_ls[3];
+                let change_user_vector4 =  document.getElementById("vector4")
+                change_user_vector4.innerText = new_user_vector4
+
+                let new_user_vector5 = vector_ls[4];
+                let change_user_vector5 =  document.getElementById("vector5")
+                change_user_vector5.innerText = new_user_vector5
+
+                let new_user_vector6 = vector_ls[5];
+                let change_user_vector6 =  document.getElementById("vector6")
+                change_user_vector6.innerText = new_user_vector6
+
+                let new_user_vector7 = vector_ls[6];
+                let change_user_vector7 =  document.getElementById("vector7")
+                change_user_vector7.innerText = new_user_vector7
+
+                let new_user_vector8 = vector_ls[7];
+                let change_user_vector8 =  document.getElementById("vector8")
+                change_user_vector8.innerText = new_user_vector8
+
+                let new_user_vector9 = vector_ls[8];
+                let change_user_vector9 =  document.getElementById("vector9")
+                change_user_vector9.innerText = new_user_vector9
+
+                let new_user_vector10 = vector_ls[9];
+                let change_user_vector10 =  document.getElementById("vector10")
+                change_user_vector10.innerText = new_user_vector10
+
+                let btn_msg =  document.getElementById("19_sub")
+                if (btn_msg.innerText == "GOOD!"){
+                    btn_msg.innerText = "NICE!"
+                }
+                else if(btn_msg.innerText == "NICE!"){
+                    btn_msg.innerText = "NYAM!"
+                }
+                else{
+                    btn_msg.innerText = "GOOD!"
+                }
+                    }})}
+
+    </script>
+
+
+<!--   주변 거리 슬라이더 스크립트-->
+<script language = "javascript">
+    function ShowSliderValue(sVal)
+    {
+        var obValueView = document.getElementById("slider_value_view");
+        obValueView.innerHTML = sVal
+    }
+    var RangeSlider = function(){
+        var range = $('.slider_range');
+        range.on('input', function(){
+            ShowSliderValue(this.value);
+        });
+    };
+RangeSlider();
+</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!--   주변 거리 슬라이더 스크립트-->
+<!--set distance-->
+<script>
+    function   set_dis1(){
+        let distance =  document.getElementById("slider_value_view");
+        distance.innerText = 500
+    }
+    function   set_dis2(){
+        let distance =  document.getElementById("slider_value_view");
+        distance.innerText = 1000
+    }
+
+    function   set_dis3(){
+        let distance =  document.getElementById("slider_value_view");
+        distance.innerText = 3000
+    }
+
+    function   set_dis4(){
+        let distance =  document.getElementById("slider_value_view");
+        distance.innerText = 5000
+    }
+
+    function   set_dis5(){
+        let distance =  document.getElementById("slider_value_view");
+        distance.innerText = 10000
+    }
+
+    function   set_dis6(){
+        let distance =  document.getElementById("slider_value_view");
+        distance.innerText = 50000
+    }
+
+
+</script>
+
+
+
+</body>
+<footer>
+    <div>
+        <p class="footer pt-5 contaniner d-flex justify-content-center">
+            &copy; Jump Rabbit 2022. All Rights Reserved.
+        </p>
+    </div>
+</footer>
+
+</html>
+
+<!-- 유튜브 검색 https://www.youtube.com/results?search_query= 가게명 -->
+<!--   네이버 검색 이동버튼  https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query= 가게명   -->
+<!--    인스타 이동 버튼  https://www.instagram.com/explore/tags/가게명/  -->

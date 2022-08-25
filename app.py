@@ -16,6 +16,8 @@ def home():
 
 
 @app.route('/get_data', methods=['GET'])
+
+
 def get_info():
     latitude_receive = request.args.get('latitude_give')
     longitude_receive = request.args.get('longitude_give')
